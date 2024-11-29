@@ -1,48 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package gestion.de.eventos;
-
-/**
- *
- * @author InnoVausuario
- */
 public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
-
     public static void main(String[] args) {
+        // Crear organizador
+        Organizador organizador = new Organizador("Carlos", "Perez", "123456789", 35, "0987654321");
 
         // Crear sistema de gestión de eventos
-        GestionEvento sistema = new GestionEvento();
-
-        // Crear organizador
-        Organizador organizador = new Organizador("Juan", "Pérez", 2589, 32, 987463210, "Gestión de Eventos");
+        SistemaGestionEvento sistema = new SistemaGestionEvento();
 
         // Crear evento
-        sistema.crearEvento("Tech Conference", "2024-12-15", "Auditorio Principal", organizador);
+        sistema.registrarParticipante(organizador, "Conferencia de Tecnología", "2024-12-15", "Centro de Convenciones");
 
-        // Obtener el evento creado
-        Evento evento = sistema.verEventosRegistrados().get(0);
+        // Crear participantes
+        Participante invitado = new Invitado("Mario", "Rivas", "985432121", 28, "0956789678", "Invitado", "VIP");
+        Participante ponente = new Ponente("Luis", "Panamito", "1112345455", 40, "0998765432", "Ponente", "Inteligencia Artificial", "10:00 AM");
 
-        // Crear y registrar participantes en el evento
-        Participante participante1 = new Invitado("Ana", "Lopez", 67890, 28, 123456789, "Asistente", "VIP");
-        Participante ponente = new Ponente("Carlos", "Martínez", 11111, 35, 56321479, "Ponente", "Hablando del Futuro", "10:00 AM");
-
-        evento.registrarParticipante(participante1);
+        // Registrar participantes en el evento
+        Evento evento = new Evento("Conferencia de Tecnologia", "2024-12-15", "Centro de Convenciones", organizador);
+        evento.registrarParticipante(invitado);
         evento.registrarParticipante(ponente);
 
-        // Consultar información del evento y sus participantes
-        System.out.println("Eventos registrados:");
-        for (Evento e : sistema.verEventosRegistrados()) {
-            e.mostrarInformacion();
-        }
+        // Mostrar información del evento
+        evento.mostrarInformacion();
 
-        // Opcional: Actualizar información de los participantes (si está implementado en el organizador)
-        organizador.actualizarParticipantes();
+        // Acciones de los participantes
+        invitado.aceptarInvitacion();
+        System.out.println("El ponente realizo cambios a la presentacion ");
+        ((Ponente) ponente).modificarPresentacion();
     }
 }
 

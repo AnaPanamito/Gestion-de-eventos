@@ -1,22 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package gestion.de.eventos;
-
-import java.util.List;
-
-
-/**
- *
- * @author InnoVausuario
- */
 public class Evento {
-   private String nombre;
+    private String nombre;
     private String fecha;
     private String ubicacion;
     private Organizador organizador;
-    private List<Participante> participantes;
 
     public Evento(String nombre, String fecha, String ubicacion, Organizador organizador) {
         this.nombre = nombre;
@@ -25,8 +11,41 @@ public class Evento {
         this.organizador = organizador;
     }
 
-    public void registrarParticipante(Participante p) {
-       boolean add = participantes.add(p);
+    // Get y Set
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public Organizador getOrganizador() {
+        return organizador;
+    }
+
+    public void setOrganizador(Organizador organizador) {
+        this.organizador = organizador;
+    }
+
+    public void registrarParticipante(Participante participante) {
+        System.out.println(participante.getNombre() + " ha sido registrado en el evento " + nombre);
     }
 
     public void mostrarInformacion() {
